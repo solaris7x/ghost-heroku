@@ -1,0 +1,14 @@
+diff --git a/docker-entrypoint.sh b/docker-entrypoint-modified.sh
+index 9cf1c8c..d9cb8ba 100644
+--- a/docker-entrypoint.sh
++++ b/docker-entrypoint-modified.sh
+@@ -1,6 +1,9 @@
+ #!/bin/bash
+ set -e
+ 
++#Source env file
++source /usr/local/bin/env.sh
++
+ # allow the container to be started with `--user`
+ if [[ "$*" == node*current/index.js* ]] && [ "$(id -u)" = '0' ]; then
+ 	find "$GHOST_CONTENT" \! -user node -exec chown node '{}' +
